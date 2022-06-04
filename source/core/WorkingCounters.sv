@@ -40,6 +40,9 @@ module WorkingCounters (
         .carry_out(internal_carry)
     );
 
-    assign finished = en ? (bottle == bottle_setting && pill == '0) : 1'b0;
+    assign finished = en ?
+        (bottle == bottle_setting && pill == '0) ||
+            (bottle_setting == '0 || pill_setting == '0) :
+        1'b0;
 
 endmodule
